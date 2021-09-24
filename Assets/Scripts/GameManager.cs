@@ -64,14 +64,14 @@ public class GameManager : monosingleton<GameManager>
     private void Awake()
     {
 
-        SAVE_PATH = Application.persistentDataPath + "/Resources";
+        SAVE_PATH = Application.persistentDataPath;
         if (!Directory.Exists(SAVE_PATH))
         {
             Directory.CreateDirectory(SAVE_PATH);
         }
         LoadFromJson();
         uiManager = FindObjectOfType<UIManager>();
-
+        print(SAVE_PATH);
         InvokeRepeating("SaveToJson", 1f, 60f);
         InvokeRepeating("EarnMoneyPerSecond", 0f, 1f);
         //InvokeRepeating("MoneyePs", 0f, 1f);
@@ -95,7 +95,7 @@ public class GameManager : monosingleton<GameManager>
 
     private void SaveToJson()
     {
-        SAVE_PATH = Application.persistentDataPath + "/Resources";
+        SAVE_PATH = Application.persistentDataPath;
         if (user == null) return;
         string json = JsonUtility.ToJson(user);
         File.WriteAllText(SAVE_PATH + SAVE_FILENAME, json, System.Text.Encoding.UTF8);
