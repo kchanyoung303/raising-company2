@@ -1713,17 +1713,17 @@ MonoBehaviour:
       amount: 0
       price: 4000
       ePs: 1000
-      cPs: 10
+      cPs: 5
       plusmaxamount: 5
-      pluscPs: 10
+      pluscPs: 5
     - name: "\uACE0\uCE35\uBE4C\uB529"
       imageNumber: 1
       amount: 0
       price: 8000
       ePs: 1000
-      cPs: 25
+      cPs: 12
       plusmaxamount: 10
-      pluscPs: 25
+      pluscPs: 12
   textpool: {fileID: 503151776}
 --- !u!4 &662065764
 Transform:
