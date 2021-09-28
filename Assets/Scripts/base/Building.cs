@@ -6,5 +6,7 @@ public class Building
     public int amount;
     public long price;
     public long ePs;
+    public long cPs;
     public int plusmaxamount;
+    public int pluscPs;
 }

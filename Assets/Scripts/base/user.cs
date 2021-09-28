@@ -7,24 +7,27 @@ public class User
 {
     public string nickname;
     public long money;
-    public int maxAmount = 10;
+    public int maxAmount;
     public float totalEps;
     public float plusmaxAmount;
+    public long TotalcPs;
     public float endplusmaxAmount;
     public int totalamount;
     public List<Staff> staffList = new List<Staff>();
     public List<Building> buildingList = new List<Building>();
 
-    
-    public float mouseEps
+    public float totalcPs
     {
         get
         {
-            return (float)(1f > Math.Round(TotalEps * 0.01f) ? 1f : Math.Round(TotalEps * 0.01f));
+            TotalcPs = 1;
+            foreach (Building building in buildingList)
+            {
+                TotalcPs += building.cPs * building.amount;
+            }
+            return TotalcPs;
         }
     }
-
-
     public float TotalEps
     {
 

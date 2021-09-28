@@ -12,6 +12,7 @@ public class BuildingUpgradePanel : MonoBehaviour
     [SerializeField] private Text buildingamountText = null;
     [SerializeField] private Button purchaseButton1 = null;
     [SerializeField] private Text PlusAmount = null;
+    [SerializeField] private Text PluscPs = null;
     [SerializeField] private Sprite[] buildingSprite = null;
     private Building building = null;
     #endregion
@@ -19,6 +20,7 @@ public class BuildingUpgradePanel : MonoBehaviour
     public void SetValue(Building building)
     {
         PlusAmount.text = string.Format("+{0} 직원수", building.plusmaxamount);
+        PluscPs.text = string.Format("+{0} 클릭당", building.pluscPs);
         this.building = building;
         buildingImage.sprite = buildingSprite[building.imageNumber];
         buildingName.text = building.name;
@@ -38,6 +40,7 @@ public class BuildingUpgradePanel : MonoBehaviour
             buildingamountText.text = string.Format("{0}", buildingInList.amount);
             buildingpriceText.text = string.Format("{0} 만원", buildingInList.price);
             PlusAmount.text = string.Format("+{0} 직원수", buildingInList.plusmaxamount);
+            PluscPs.text = string.Format("+{0} 클릭당", buildingInList.pluscPs);
             GameManager.Instance.uiManager.UpdateMoneyPanel();
     }
 }

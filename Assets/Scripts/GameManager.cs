@@ -11,6 +11,11 @@ public class GameManager : monosingleton<GameManager>
     private User user = null;
     private Button btn;
 
+    [SerializeField]
+    private Transform textpool = null;
+
+    public Transform Pool { get { return textpool; } }
+
     public User CurrentUser { get { return user; } }
 
     private string SAVE_PATH = "";

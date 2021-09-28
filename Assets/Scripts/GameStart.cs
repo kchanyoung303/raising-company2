@@ -10,7 +10,7 @@ public class GameStart : MonoBehaviour
     [SerializeField] private Text txtTitle;
     private string m_Message;
     private string m_Message2;
-    private float m_Speed = 0.2f;
+    private float m_Speed = 0.15f;
     [SerializeField] private RectTransform Panel;
     void Start()
     {

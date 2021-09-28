@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private  Text moneyText = null;
     [SerializeField]
+    private Text moneyClick = null;
+    [SerializeField]
     Animator Computer = null;
     [SerializeField]
     private FirePanel FirePanelTemplate = null;
@@ -19,6 +21,8 @@ public class UIManager : MonoBehaviour
     private UpgradePanel upgradePanelTemplate = null;
     [SerializeField]
     private BuildingUpgradePanel buildingupgradePanelTemplate = null;
+    [SerializeField]
+    private MoneyText moneyTextTemplate = null;
 
     private Button btn;
 
@@ -83,14 +87,30 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickComputer()
     {
-        GameManager.Instance.CurrentUser.money += 1;
+        GameManager.Instance.CurrentUser.money += GameManager.Instance.CurrentUser.TotalcPs;
         Computer.Play("Click");
+        MoneyText newText = null;
+
+        if (GameManager.Instance.Pool.childCount > 0)
+        {
+            newText = GameManager.Instance.Pool.GetChild(0).GetComponent<MoneyText>();
+            newText.transform.SetParent(GameManager.Instance.Pool.parent);
+            newText.transform.position = new Vector2(0, 0);
+        }
+        else
+        {
+            newText = Instantiate(moneyTextTemplate, GameManager.Instance.Pool.parent).GetComponent<MoneyText>();
+        }
+
+        newText.gameObject.SetActive(true);
+        newText.Show(GameManager.Instance.CurrentUser.totalcPs);
         UpdateMoneyPanel();
     }
 
     public void UpdateMoneyPanel()
     {
         moneyText.text = string.Format("{0} 만원", GameManager.Instance.CurrentUser.money);
+        moneyClick.text = string.Format("{0} /클릭당", GameManager.Instance.CurrentUser.TotalcPs);
         moneyPerSecond.text = string.Format("{0} 만/s", GameManager.Instance.CurrentUser.TotalEps);
         amounttotalmax.text = string.Format("{0}/{1} 직원 수", GameManager.Instance.CurrentUser.Totalamount,GameManager.Instance.CurrentUser.MaxAmount);
     }
