@@ -9,7 +9,6 @@ public class GameStart : MonoBehaviour
 {
     [SerializeField] private Text txtTitle;
     private string m_Message;
-    private string m_Message2;
     private float m_Speed = 0.15f;
     [SerializeField] private RectTransform Panel;
     void Start()
@@ -25,7 +24,7 @@ COMPANY
     {
         for (int i = 0; i < message.Length; i++)
         {
-            txtTitle.text = message.Substring(0, i + 1);
+            txtTitle.text = message.Substring(0 , i + 1);
             yield return new WaitForSeconds(speed);
         }
         UpDown();
