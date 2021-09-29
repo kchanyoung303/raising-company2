@@ -50,7 +50,7 @@ public class User
     {
         get
         {
-            maxAmount=8;
+            maxAmount=5;
             foreach(Building building in buildingList)
             {
                 maxAmount += building.amount*building.plusmaxamount;
