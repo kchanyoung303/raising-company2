@@ -8,7 +8,7 @@ public class MoneyText : MonoBehaviour
 
     public void Show(float number)
     {
-        
+
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         moneyText = GetComponent<Text>();
@@ -17,10 +17,6 @@ public class MoneyText : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         float targetPositionY = rectTransform.anchoredPosition.y + 100f;
         rectTransform.DOAnchorPosY(targetPositionY, 0.5f).OnComplete(() => Despawn());
-    }
-
-    void Start()
-    {
     }
 
     private void Despawn()
